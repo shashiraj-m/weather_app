@@ -56,7 +56,6 @@ class WeatherCubit extends Cubit<WeatherState> {
 
     for (var forecast in forecasts) {
       final dateKey = DateFormat('yyyy-MM-dd').format(forecast.date);
-     
 
       // Only pick one forecast per day, preferably closest to 12 PM
       if (!result.containsKey(dateKey) ||
@@ -84,5 +83,20 @@ class WeatherCubit extends Cubit<WeatherState> {
               f.date.isBefore(now.add(const Duration(days: 5))),
         )
         .toList();
+  }
+
+  Future<void> fetchWeather(double lat, double lon) async {
+    try {
+      emit(WeatherLoading());
+
+      final weather = await weatherService.fetchWeather(lat, lon);
+      final forecast = await weatherService.fetchForecast(lat, lon);
+
+      final todayHourly = _getFiveDayThreeHourlyForecast(forecast);
+
+      emit(WeatherLoaded(weather, forecast, todayHourly));
+    } catch (e) {
+      emit(WeatherError(e.toString()));
+    }
   }
 }

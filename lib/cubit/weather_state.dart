@@ -20,7 +20,9 @@ final List<Forecast> todayHourly;
   WeatherLoaded(this.weather, this.forecast,this.todayHourly);
 
   @override
-  List<Object?> get props => [weather, forecast];
+ @override
+  List<Object?> get props => [weather, forecast, todayHourly];
+
 }
 
 class WeatherError extends WeatherState {
