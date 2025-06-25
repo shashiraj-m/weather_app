@@ -133,6 +133,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         decoration: BoxDecoration(
+          border: Border.all(width: 0.1, color: Colors.white),
           color: Colors.black.withValues(alpha: 0.04),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -163,6 +164,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           child: Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
+              border: Border.all(width: 0.1, color: Colors.white),
               borderRadius: BorderRadius.circular(20),
               color: Colors.black.withValues(alpha: 0.04),
             ),
@@ -176,10 +178,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     '${city["name"]}, ${city["country"]}',
                     style: const TextStyle(color: Colors.white),
                   ),
-                  subtitle: Text(
-                    'Lat: ${city["lat"]}, Lon: ${city["lon"]}',
-                    style: const TextStyle(color: Colors.white70, fontSize: 12),
-                  ),
+                  // subtitle: Text(
+                  //   'Lat: ${city["lat"]}, Lon: ${city["lon"]}',
+                  //   style: const TextStyle(color: Colors.white70, fontSize: 12),
+                  // ),
                   onTap: () {
                     context.read<WeatherCubit>().fetchWeather(
                       city["lat"],
@@ -213,6 +215,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               width: double.infinity,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
+                border: Border.all(width: 0.1, color: Colors.white),
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.black.withValues(alpha: 0.04),
               ),
@@ -220,6 +223,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -348,6 +352,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   return SizedBox(
                     width: item.description.contains('cloud') ? 120 : 100,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(

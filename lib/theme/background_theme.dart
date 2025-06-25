@@ -10,12 +10,12 @@ class BackgroundTheme {
 
     // Night
     if (hour >= 20 || hour <= 5) {
-      return [Colors.indigo.shade900, Colors.black];
+      return [Colors.black, Colors.indigo.shade900];
     }
 
     // Morning (6 AM - 10 AM)
     if (hour >= 6 && hour < 10) {
-      return [Colors.orange.shade200, Colors.blue.shade200];
+      return [Colors.deepOrange.shade400, Colors.blue.shade400];
     }
 
     // Day (10 AM - 4 PM)
@@ -31,7 +31,7 @@ class BackgroundTheme {
 
     // Evening (4 PM - 8 PM)
     if (hour >= 16 && hour < 20) {
-      return [Colors.orange.shade400, Colors.deepOrange.shade700];
+      return [Colors.blue.shade400, Colors.deepOrange.shade400];
     }
 
     // Default fallback
